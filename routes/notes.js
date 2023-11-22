@@ -3,7 +3,7 @@ const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
 const uuid = require('../helpers/uuid');
 
 // GET Route for retrieving notes
-notes.get('/notes', (req, res) => {
+notes.get('/', (req, res) => {
     console.info(`${req.method} request received for tips`);
     readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
