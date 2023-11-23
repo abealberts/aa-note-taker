@@ -9,7 +9,7 @@ notes.get('/', (req, res) => {
 });
 
 //POST Route for saving notes on the request body & adding to db.json, returning new note to end user
-notes.post('/notes', (req, res) => {
+notes.post('/', (req, res) => {
     console.info(`${req.method} request received to add a note`);
     console.log(req.body);
 
