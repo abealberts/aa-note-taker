@@ -1,14 +1,16 @@
 const notes = require('express').Router();
-const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
+const { readFromFile, readAndAppend, writeToFile } = require('../helpers/fsUtils');
 const uuid = require('../helpers/uuid');
+
+var noteList = require('../db/db.json');
 
 // GET Route for retrieving notes
 notes.get('/', (req, res) => {
-    console.info(`${req.method} request received for tips`);
+    console.info(`${req.method} request received for notes`);
     readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
-//POST Route for saving notes on the request body & adding to db.json, returning new note to end user
+//POST Route for saving notes on the request body & adding to db.json
 notes.post('/', (req, res) => {
     console.info(`${req.method} request received to add a note`);
     console.log(req.body);
@@ -19,7 +21,7 @@ notes.post('/', (req, res) => {
         const newNote = {
             title,
             text,
-            note_id: uuid(),
+            id: uuid(),
         };
 
         readAndAppend(newNote, './db/db.json');
@@ -27,6 +29,22 @@ notes.post('/', (req, res) => {
     } else {
         res.error(`Error in adding note`);
     }
+});
+
+//DELETE Route for deleting notes within db.json that have the targeted id
+notes.delete('/:id', (req, res) => {
+    const idToRemove = req.params.id;
+
+    for (let i = 0; i < noteList.length; i++) {
+        if (noteList[i].id == idToRemove) {
+            delete noteList[i];
+        }
+    };
+
+    writeToFile('./db/db.json', noteList);
+    res.json(`Note deleted successfully`)
+
+    console.log(`Note (${idToRemove}) deleted successfully`);
 });
 
 module.exports = notes;
