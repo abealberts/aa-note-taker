@@ -41,10 +41,9 @@ notes.delete('/:id', (req, res) => {
         }
     };
 
+    console.info(`Note (${idToRemove}) deleted successfully`);
     writeToFile('./db/db.json', noteList);
-    res.json(`Note deleted successfully`)
-
-    console.log(`Note (${idToRemove}) deleted successfully`);
+    res.json(`Note deleted successfully`);
 });
 
 module.exports = notes;

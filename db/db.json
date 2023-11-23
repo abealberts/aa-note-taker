@@ -1,7 +1,27 @@
 [
     {
-        "title": "Test Note",
-        "text": "Test note text",
-        "id": "f406"
+        "title": "Project Meeting @ 12pm",
+        "text": "Candice wants to go over the branding for her new cat cafe business. Dreading this one!",
+        "id": "6cc1"
+    },
+    {
+        "title": "Pick Up Catering",
+        "text": "Bossman wants me to pick up the catering for the big work lunch today. Dude really ordered 250 bean burritos from El Burro Loco...",
+        "id": "823d"
+    },
+    {
+        "title": "Nap Time @ 4pm",
+        "text": "The best part of my day",
+        "id": "c832"
+    },
+    {
+        "title": "Haircut Tonight",
+        "text": "It's about time... My hair is down to my ankles and I look like Doogal from the movie Doogal. If I don't cut it soon my wife will leave me and take the kids.",
+        "id": "4a95"
+    },
+    {
+        "title": "Weird Lump on my Back ",
+        "text": "Oopsie, this was supposed to be a Google search aha 🤓",
+        "id": "3d1a"
     }
 ]
